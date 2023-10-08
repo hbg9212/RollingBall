@@ -23,7 +23,7 @@ public enum RoomObjTpye
 public class LevelSO : ScriptableObject
 {
     [field: SerializeField] public int _level { get; private set; }
-    [field: SerializeField] public int _pointCount { get; private set; }
+    [field: SerializeField] public Vector3 _roomScale { get; private set; } = new Vector3(1f, 1f, 1);
     [field: SerializeField] public Vector3 _playerPoint { get; private set; } = new Vector3(0f, 0.5f, 0);
     [field: SerializeField] public Vector3 _escapePoint { get; private set; } = new Vector3(0f, 0.05f, 0);
     [field: SerializeField] public Vector3[] _pointPositionLsit { get; private set; }

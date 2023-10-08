@@ -9,6 +9,8 @@ public class TopUI : MonoBehaviour
     [SerializeField] private GameObject _slot;
     [SerializeField] private GameObject[] _slotList;
 
+    private int _point = 0;
+
     public void SetInit(int count)
     {
         _slotList = new GameObject[count];
@@ -20,8 +22,10 @@ public class TopUI : MonoBehaviour
         }
     }
 
-    public void UpdateSlot(int index)
+    public void UpdateSlot()
     {
-        _slotList[index].GetComponent<PointSlot>().UpdateImage();
+        _slotList[_point].GetComponent<PointSlot>().UpdateImage();
+        _point++;
     }
+
 }

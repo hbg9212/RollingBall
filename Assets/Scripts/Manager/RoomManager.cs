@@ -22,8 +22,8 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    private Transform _pointParent;
-    private TopUI _topUi;
+    public TopUI _topUi { get; private set; }
+    public Transform _pointParent { get; private set; }
 
     private const string _point = "Point";
     private const string _topUI = "TopUI";
@@ -36,16 +36,13 @@ public class RoomManager : MonoBehaviour
 
         GameObject res = Resources.Load<GameObject>(_topUI);
         GameObject instantiate = Instantiate(res, Vector3.zero, Quaternion.identity);
-        instantiate.transform.SetParent(_pointParent);
         _topUi = instantiate.GetComponent<TopUI>();
     }
 
-
-    private int _pointCount;
+    public int _pointCount { get; private set; }
 
     public void Init(LevelSO levelSO)
     {
-        _pointCount = levelSO._pointCount;
         Vector3[] pointPosition = levelSO._pointPositionLsit;
         for (int i = 0; i < pointPosition.Length; i++) 
         {
@@ -54,7 +51,7 @@ public class RoomManager : MonoBehaviour
             instantiate.transform.SetParent(_pointParent);
         }
 
-        _topUi.SetInit(levelSO._pointCount);
-
+        _topUi.SetInit(pointPosition.Length);
+        _pointCount = pointPosition.Length;
     }
 }
