@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameScene : MonoBehaviour
+public class MapGameScene : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _escape;
@@ -13,7 +13,6 @@ public class GameScene : MonoBehaviour
     private void Start()
     {
         Debug.Log(RoomManager.Instance);
-        _levelSO = Resources.Load<LevelSO>($"Level/Level_{PlayerPrefs.GetInt("selectLevel")}");
 
         if (_levelSO._roomScale != Vector3.one)
         {

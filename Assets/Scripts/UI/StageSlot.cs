@@ -16,17 +16,26 @@ public class StageSlot : MonoBehaviour
         _level = level;
         _text.text = _level.ToString();
 
-        if (_level <= GameManager.Instance._level + 1)
+        if (_level <= GameManager.Instance._level)
         {
             OpenStage();
         }
+        else
+        {
+            CloseStage();
+        }
     }
 
-    public void OpenStage()
+    private void OpenStage()
     {
         _lock.gameObject.SetActive(false);
         _btn.onClick.AddListener(StartStage);
+    }
 
+    private void CloseStage()
+    {
+        _lock.gameObject.SetActive(true);
+        _btn.onClick.RemoveListener(StartStage);
     }
 
     void StartStage()
@@ -34,6 +43,5 @@ public class StageSlot : MonoBehaviour
         GameManager.Instance.StartStage(_level);
         GameManager.Instance.levelPanel.SetActive(false);
     }
-
 
 }

@@ -23,4 +23,9 @@ public class PlayerInput : MonoBehaviour
         InputActions.Disable();
     }
 
+    public void StopPlayer()
+    {
+        InputActions.Disable();
+    }
+
 }

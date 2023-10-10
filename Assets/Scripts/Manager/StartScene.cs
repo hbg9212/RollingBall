@@ -9,7 +9,8 @@ public class StartScene : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("maxLevel",2);
+        PlayerPrefs.SetInt("level", 1);
+        PlayerPrefs.SetInt("maxLevel",3);
         Debug.Log(GameManager.Instance);
 
         _startBtn.onClick.AddListener(SelectStage);

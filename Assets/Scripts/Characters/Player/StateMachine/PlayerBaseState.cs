@@ -117,7 +117,7 @@ public class PlayerBaseState : IState
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Move.canceled += OnMovementCanceled;
         input.PlayerActions.Run.started += OnRunStarted;
-        //input.PlayerActions.ESC.started += OnEscStarted;
+        input.PlayerActions.ESC.started += OnEscStarted;
 
         stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
 
@@ -150,7 +150,7 @@ public class PlayerBaseState : IState
 
     protected virtual void OnEscStarted(InputAction.CallbackContext context)
     {
-        //stateMachine.Player.Input.StopPlayer();
+        
     }
 
     protected float GetNormalizedTime(Animator animator, string tag)

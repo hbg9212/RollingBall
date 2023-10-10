@@ -46,16 +46,22 @@ public class GameManager : MonoBehaviour
     private const string _mainScene = "MainScene";
     public void StartStage(int level)
     {
-        if (_maxLevel < level || _level + 1 < level)
+        if (_maxLevel < level || _level < level)
             return;
 
-        PlayerPrefs.SetInt("selectlevel",level);
+        PlayerPrefs.SetInt("selectLevel",level);
         SceneManager.LoadScene(_mainScene);
     }
 
     public void ToggleCursor(bool toggle)
     {
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = toggle;
     }
 
+    public void StageClear()
+    {
+        _level++;
+        PlayerPrefs.SetInt("level",_level);
+    }
 }

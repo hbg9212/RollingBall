@@ -29,14 +29,13 @@ public class RoomManager : MonoBehaviour
     private void Start()
     {
         _instance = this;
-
     }
 
     public int _pointCount { get; private set; }
 
     public void Init(LevelSO levelSO)
     {
-        GameObject go = new GameObject("PickUpParent");
+        GameObject go = new GameObject("RoomObj");
         go.transform.SetParent(this.transform);
         _pointParent = go.transform;
 
@@ -56,5 +55,22 @@ public class RoomManager : MonoBehaviour
 
         _topUi.SetInit(_pointCount);
 
+        RoomObj[] roomObjList = levelSO._roomObjList;
+        if (roomObjList != null)
+        {
+            foreach(RoomObj roomObj in roomObjList)
+            {
+                GameObject res = Resources.Load<GameObject>(roomObj.roomObjTpye.ToString());
+                instantiate = Instantiate(res, roomObj._roomObjPosition, roomObj._roomObjRotation);
+                if(roomObj._roomObjScale != Vector3.one)
+                {
+                    instantiate.transform.localScale = roomObj._roomObjScale;
+                }
+                
+                instantiate.transform.SetParent(_pointParent);
+
+
+            }
+        }
     }
 }
