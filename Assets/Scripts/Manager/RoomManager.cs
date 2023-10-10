@@ -15,7 +15,7 @@ public class RoomManager : MonoBehaviour
                 GameObject go = new GameObject("RoomManager");
                 _instance = go.AddComponent<RoomManager>();
 
-                //DontDestroyOnLoad(_instance);
+                DontDestroyOnLoad(_instance);
             }
 
             return _instance;
@@ -27,31 +27,36 @@ public class RoomManager : MonoBehaviour
 
     private const string _point = "Point";
     private const string _topUI = "TopUI";
+
     private void Start()
     {
         _instance = this;
-        GameObject go = new GameObject("PickUpParent");
-        _pointParent = go.transform;
-        go.transform.SetParent(this.transform);
 
-        GameObject res = Resources.Load<GameObject>(_topUI);
-        GameObject instantiate = Instantiate(res, Vector3.zero, Quaternion.identity);
-        _topUi = instantiate.GetComponent<TopUI>();
     }
 
     public int _pointCount { get; private set; }
 
     public void Init(LevelSO levelSO)
     {
+        GameObject go = new GameObject("PickUpParent");
+        go.transform.SetParent(this.transform);
+        _pointParent = go.transform;
+
+        GameObject topUi = Resources.Load<GameObject>(_topUI);
+        GameObject instantiate = Instantiate(topUi, Vector3.zero, Quaternion.identity);
+        _topUi = instantiate.GetComponent<TopUI>();
+
+
         Vector3[] pointPosition = levelSO._pointPositionLsit;
-        for (int i = 0; i < pointPosition.Length; i++) 
+        _pointCount = pointPosition.Length;
+        for (int i = 0; i < _pointCount; i++) 
         {
             GameObject res = Resources.Load<GameObject>(_point);
-            GameObject instantiate = Instantiate(res, pointPosition[i], Quaternion.identity);
+            instantiate = Instantiate(res, pointPosition[i], Quaternion.identity);
             instantiate.transform.SetParent(_pointParent);
         }
 
-        _topUi.SetInit(pointPosition.Length);
-        _pointCount = pointPosition.Length;
+        _topUi.SetInit(_pointCount);
+
     }
 }

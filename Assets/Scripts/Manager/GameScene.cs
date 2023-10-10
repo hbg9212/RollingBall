@@ -12,20 +12,16 @@ public class GameScene : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(RoomManager.Instance);
+
         if (_levelSO._roomScale != Vector3.one)
         {
             _room.transform.localScale = _levelSO._roomScale;
         }
 
-        Debug.Log(RoomManager.Instance);
-        _player.transform.SetPositionAndRotation(_levelSO._playerPoint, Quaternion.identity);
-        _escape.transform.SetPositionAndRotation(_levelSO._escapePoint, Quaternion.identity);
+        _player.transform.SetPositionAndRotation(_levelSO._playerPosition, Quaternion.identity);
+        _escape.transform.SetPositionAndRotation(_levelSO._escapePosition, _levelSO._escapeRotation);
 
-        Invoke("Inti", 0.1f);
-    }
-
-    private void Inti()
-    {
         RoomManager.Instance.Init(_levelSO);
     }
 }
