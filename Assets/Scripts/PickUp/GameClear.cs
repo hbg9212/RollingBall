@@ -8,4 +8,5 @@ public class GameClear : PickUp
     {
         Debug.Log("Å¬¸®¾î");
     }
+
 }

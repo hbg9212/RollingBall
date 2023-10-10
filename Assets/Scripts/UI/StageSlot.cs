@@ -31,7 +31,8 @@ public class StageSlot : MonoBehaviour
 
     void StartStage()
     {
-        Debug.Log("버튼 클릭");
+        GameManager.Instance.StartStage(_level);
+        GameManager.Instance.levelPanel.SetActive(false);
     }
 
 

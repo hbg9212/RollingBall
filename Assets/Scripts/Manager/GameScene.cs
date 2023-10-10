@@ -14,14 +14,15 @@ public class GameScene : MonoBehaviour
     {
         Debug.Log(RoomManager.Instance);
 
+        _levelSO = Resources.Load<LevelSO>($"Level/Level_{PlayerPrefs.GetInt("selectlevel")}");
+
         if (_levelSO._roomScale != Vector3.one)
         {
             _room.transform.localScale = _levelSO._roomScale;
         }
 
+        RoomManager.Instance.Init(_levelSO);
         _player.transform.SetPositionAndRotation(_levelSO._playerPosition, Quaternion.identity);
         _escape.transform.SetPositionAndRotation(_levelSO._escapePosition, _levelSO._escapeRotation);
-
-        RoomManager.Instance.Init(_levelSO);
     }
 }

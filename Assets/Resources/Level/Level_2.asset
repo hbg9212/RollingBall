@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <_level>k__BackingField: 1
   <_roomScale>k__BackingField: {x: 1, y: 1, z: 2}
-  <_playerPoint>k__BackingField: {x: 0, y: 0.5, z: -7.5}
-  <_escapePoint>k__BackingField: {x: 0, y: 0.05, z: 7}
+  <_playerPosition>k__BackingField: {x: 0, y: 0.5, z: -7}
+  <_escapePosition>k__BackingField: {x: 0, y: 0.05, z: 7}
+  <_escapeRotation>k__BackingField: {x: 0, y: 0, z: 0, w: 0}
   <_pointPositionLsit>k__BackingField:
   - {x: 0, y: 0.5, z: 0}
   - {x: 4, y: 0.5, z: 0}

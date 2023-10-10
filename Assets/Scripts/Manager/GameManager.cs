@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +40,22 @@ public class GameManager : MonoBehaviour
         GameObject instantiate = Resources.Load<GameObject>(_levelPanel);
         levelPanel = Instantiate(instantiate, Vector3.zero, Quaternion.identity);
         levelPanel.transform.SetParent(this.transform);
+    }
+
+
+    private const string _mainScene = "MainScene";
+    public void StartStage(int level)
+    {
+        if (_maxLevel < level || _level + 1 < level)
+            return;
+
+        PlayerPrefs.SetInt("selectlevel",level);
+        SceneManager.LoadScene(_mainScene);
+    }
+
+    public void ToggleCursor(bool toggle)
+    {
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
 }

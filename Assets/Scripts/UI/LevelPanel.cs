@@ -12,6 +12,11 @@ public class LevelPanel : MonoBehaviour
         SetStage();
     }
 
+    private void OnEnable()
+    {
+        GameManager.Instance.ToggleCursor(true);
+    }
+
     private void SetStage()
     {
         for(int i = 1; i <= GameManager.Instance._maxLevel; i++)

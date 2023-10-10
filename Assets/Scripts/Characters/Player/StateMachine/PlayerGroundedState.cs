@@ -58,4 +58,9 @@ public class PlayerGroundedState : PlayerBaseState
         stateMachine.ChangeState(stateMachine.JumpState);
     }
 
+    protected override void OnEscStarted(InputAction.CallbackContext context)
+    {
+        stateMachine.ChangeState(stateMachine.EscapeState);
+    }
+
 }

@@ -14,8 +14,6 @@ public class RoomManager : MonoBehaviour
             {
                 GameObject go = new GameObject("RoomManager");
                 _instance = go.AddComponent<RoomManager>();
-
-                DontDestroyOnLoad(_instance);
             }
 
             return _instance;

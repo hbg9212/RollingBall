@@ -18,5 +18,6 @@ public class StartScene : MonoBehaviour
     private void SelectStage()
     {
         GameManager.Instance.levelPanel.SetActive(true);
+
     }
 }

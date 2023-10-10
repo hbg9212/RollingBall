@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.Windows;
 
 public class PlayerBaseState : IState
 {
@@ -111,12 +112,12 @@ public class PlayerBaseState : IState
 
     }
 
-
     protected virtual void AddInputActionsCallbacks()
     {
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Move.canceled += OnMovementCanceled;
         input.PlayerActions.Run.started += OnRunStarted;
+        //input.PlayerActions.ESC.started += OnEscStarted;
 
         stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
 
@@ -127,6 +128,7 @@ public class PlayerBaseState : IState
         PlayerInput input = stateMachine.Player.Input;
         input.PlayerActions.Move.canceled -= OnMovementCanceled;
         input.PlayerActions.Run.started -= OnRunStarted;
+        input.PlayerActions.ESC.started -= OnEscStarted;
 
         stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
     }
@@ -144,6 +146,11 @@ public class PlayerBaseState : IState
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
 
+    }
+
+    protected virtual void OnEscStarted(InputAction.CallbackContext context)
+    {
+        //stateMachine.Player.Input.StopPlayer();
     }
 
     protected float GetNormalizedTime(Animator animator, string tag)

@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackState : PlayerBaseState
+public class PlayerEscapeState : PlayerGroundedState
 {
-    public PlayerAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
+    public PlayerEscapeState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
 
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0;
+        GameManager.Instance.levelPanel.SetActive(true);
+
         base.Enter();
     }
 
