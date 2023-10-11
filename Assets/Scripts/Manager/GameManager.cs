@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _level = PlayerPrefs.GetInt("level");
+        _level = _level == 0 ? 1 : _level; 
         _maxLevel = PlayerPrefs.GetInt("maxLevel");
     }
 

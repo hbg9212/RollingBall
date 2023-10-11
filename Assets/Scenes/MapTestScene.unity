@@ -1685,7 +1685,7 @@ MonoBehaviour:
   _player: {fileID: 1153434982}
   _escape: {fileID: 1507833677}
   _room: {fileID: 1619109740}
-  _levelSO: {fileID: 11400000, guid: 01d63503f94ece248a8ab12fe91d5c9c, type: 2}
+  _levelSO: {fileID: 11400000, guid: 2e065f7bef5748c4795e93620c2e6c54, type: 2}
 --- !u!1 &2049875432
 GameObject:
   m_ObjectHideFlags: 0
