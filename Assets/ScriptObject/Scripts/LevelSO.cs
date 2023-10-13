@@ -6,14 +6,14 @@ using UnityEngine;
 [Serializable]
 public class RoomObj
 {
-    [field: SerializeField] public RoomObjTpye roomObjTpye { get; private set; }
+    [field: SerializeField] public RoomObjType roomObjTpye { get; private set; }
     [field: SerializeField] public Vector3 _roomObjPosition { get; private set; }
     [field: SerializeField] public Quaternion _roomObjRotation { get; private set; }
     [field: SerializeField] public Vector3 _roomObjScale { get; private set; } = new Vector3(1f, 1f, 1f);
 }
 
 
-public enum RoomObjTpye
+public enum RoomObjType
 {
     Wall
 }
